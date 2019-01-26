@@ -12,10 +12,10 @@ Rollup 是一个 JavaScript 模块打包器。它会对符合js的ES6模块的�
 ```
 git clone https://github.com/banyaner/rollup_template.git
 ```
-1.修改package.json文件中的所有'rollup_template'为你的模块的名字
-2.模板默认会打包es6和commonjs模块。如果需要打包同时支持多种环境的模块，请看下一节
-3.模板使用prettier在git add时自动格式化代码
-4.模板在git commit时强制使用angular的commit规范使用standard version发布代码[使用方法](https://juejin.im/post/5c1611515188253847206166)。
+1. 修改package.json文件中的所有'rollup_template'为你的模块的名字
+2. 模板默认会打包es6和commonjs模块。如果需要打包同时支持多种环境的模块，请看下一节
+3. 模板使用prettier在git add时自动格式化代码
+4. 模板在git commit时强制使用angular的commit规范使用standard version发布代码[使用方法](https://juejin.im/post/5c1611515188253847206166)。
 5. package.json中main字段为iife函数，module默认为基于浏览器环境进行打包。另外，也会打包出对应的其他类型的模块（node环境和commonjs模块）。可以按照项目需求手动修改。代码中通过`process.browser`判断是否为浏览器环境，从而在生成代码时更好的缩减代码。具体的使用可以看文章[[译] 怎样写一个能同时用于 Node 和浏览器的 JavaScript 包？](https://zhuanlan.zhihu.com/p/25215447)
 
 
@@ -36,8 +36,8 @@ browser字段有两种使用方式：
 2. 如果你只需要部分文件做替换，可以使用对象。但前面提到的[文章](https://zhuanlan.zhihu.com/p/25215447)已经说明了这种方式的不友好，所以我们模板中采用了[rollup-plugin-replace](https://www.npmjs.com/package/rollup-plugin-replace)来自动的实现文件的分别打包浏览器和node环境代码。也就不需要使用browser字段了.
 
 ### 模板中配置的插件：
-1.[rollup-plugin-node-resolve](https://github.com/rollup/rollup-plugin-node-resolve)rollup不知道如何处理从npm上安装到node_modules的依赖，这个插件就是告诉rollup如何查找外部的模块。
-2.[rollup-plugin-commonjs](https://github.com/rollup/rollup-plugin-commonjs)有些库导出的是commonjs的模块，而rollup默认是使用ES6标准，改插件就是将commonjs模块转成ES6模块。
+1. [rollup-plugin-node-resolve](https://github.com/rollup/rollup-plugin-node-resolve)rollup不知道如何处理从npm上安装到node_modules的依赖，这个插件就是告诉rollup如何查找外部的模块。
+2. [rollup-plugin-commonjs](https://github.com/rollup/rollup-plugin-commonjs)有些库导出的是commonjs的模块，而rollup默认是使用ES6标准，改插件就是将commonjs模块转成ES6模块。
 3. [rollup-plugin-babel](https://github.com/rollup/rollup-plugin-babel)
 4. @commitlint/cli @commitlint/config-conventional husky standard-version 安装这3个插件是为了实现使用angular的commit规范，和规范的进行发版。更多的介绍看[这里](https://juejin.im/post/5c1611515188253847206166)
 ~~5. [babel-external-helpers](https://babel.bootcss.com/docs/plugins/external-helpers/)babel-cli 中的一个command，用来生成一段代码，包含 babel 所有的 helper 函数。babel-helpers包里存放了很多帮助函数，如果babel检测到某个文件编译时就会把这个函数放到模块的顶部。但是如果有多个文件都是用了这些helpers就会导致多个模块重复定义。external-helpers插件，它允许 Rollup 在包的顶部只引用一次 “helpers”，而不是每个使用它们的模块中都引用一遍。~~现在是默认支持了。
