@@ -1,7 +1,7 @@
 {
   "name": "rollup_template",
   "version": "1.0.0",
-  "description": "a template for build library",
+  "description": "a basic template for build a library",
   "main": "dist/rollup_template.js",
   "module": "lib/rollup_template.esm.js",
   "scripts": {
