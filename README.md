@@ -15,7 +15,8 @@ git clone https://github.com/banyaner/rollup-project-template.git
 2. 模板默认会打包 es6 和 commonjs 模块。如果需要打包同时支持多种环境的模块，请看下一节
 3. 模板使用 prettier 在 git add 时自动格式化代码
 4. 模板在 git commit 时强制使用 angular 的 commit 规范使用 standard version 发布代码[使用方法](https://juejin.im/post/5c1611515188253847206166)。
-5. package.json 中 main 字段为 iife 函数，module 默认为基于浏览器环境进行打包。另外，也会打包出对应的其他类型的模块（node 环境和 commonjs 模块）。可以按照项目需求手动修改。代码中通过`process.browser`判断是否为浏览器环境，从而在生成代码时更好的缩减代码。具体的使用可以看文章[[译] 怎样写一个能同时用于 Node 和浏览器的 JavaScript 包？](https://zhuanlan.zhihu.com/p/25215447)
+5. package.json 中 main 字段为 iife 函数，module 默认为基于浏览器环境进行打包。另外，也可以打包其他环境下的模块（node 环境和 commonjs 模块）。可以按照项目需求手动修改。代码中通过`process.browser`判断是否为浏览器环境，从而在生成代码时更好的缩减代码。具体的使用可以看文章[[译] 怎样写一个能同时用于 Node 和浏览器的 JavaScript 包？](https://zhuanlan.zhihu.com/p/25215447)
+6. 项目中会在dist目录下放置iife格式的代码。lib下会放置commonjs和es6和node环境下的commonjs代码，便于用户引用。
 
 ### 关于 package.json 中的 main、module、browser 字段。
 
