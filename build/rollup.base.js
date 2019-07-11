@@ -8,7 +8,7 @@ import replace from 'rollup-plugin-replace'
 import pkg from '../package.json'
 
 export default config => ({
-  input: './src/main.js',
+  input: './src/index.js',
   output: {
     file: config.file,
     format: config.format,
