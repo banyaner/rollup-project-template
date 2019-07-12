@@ -11,6 +11,9 @@ const test = () => {
 new Promise(res => {
   res(1)
 })
+
+
+
 const arr = Array.from(1, 2, 3)
 console.log([...arr])
 export { test }

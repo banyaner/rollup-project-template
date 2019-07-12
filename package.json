@@ -1,6 +1,6 @@
 {
-  "name": "rollup_template",
-  "version": "1.0.0",
+  "name": "rollup-projeet-template",
+  "version": "0.1.0",
   "description": "a basic template for build a library",
   "main": "dist/rollup_template.js",
   "module": "lib/rollup_template.es.js",
@@ -12,16 +12,16 @@
     "rollup": "npm-run-all --parallel rollup-cjs rollup-es rollup-iife",
     "build": " npm-run-all clean rollup"
   },
+  "lint-staged": {
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    },
-    "lint-staged": {
-      "*.{js,json,css,md}": [
-        "prettier --write",
-        "git add"
-      ]
     }
   },
   "author": "Banyaner",
